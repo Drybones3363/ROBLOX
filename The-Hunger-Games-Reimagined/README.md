@@ -1,4 +1,5 @@
 <h1> The Hunger Games: Reimagined </h1><br>
+<b><a href="https://www.roblox.com/games/265496283/--">Play Here</a></b>
 ![THG:R](http://t0.rbxcdn.com/2ac4201d93d1358cc9c41e307639712c)
 <br>
 I am the core coder of this game.
