@@ -268,6 +268,7 @@ local Disaster_Table = {
 		Title = "Tracker Jackers",
 		Pic = "rbxassetid://328362457",
 		Desc = "Spawns Tracker Jackers, deadly mutts that make you hallucinate when stung, in Trees across the entire Map."
+		Flag = "flag{no1_c@n_surv1ve_the_j@ckers}"
 	},
 	{
 		Title = "Mosquito Mutts",
