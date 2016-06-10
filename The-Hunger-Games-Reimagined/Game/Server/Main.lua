@@ -4259,5 +4259,3 @@ game.OnClose = function()
 end
 
 --Generate_Arena()
-
-wait(10)
