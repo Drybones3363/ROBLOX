@@ -79,15 +79,25 @@ local function convert_to_code(ui)
 	for i,k in pairs (tbl) do
 		add_prop_code(ui,i,k)
 	end
-	for e,r in pairs (ui:GetChildren()) do
+	local function doit(e,r,na)
 		local n = r.Name
-		str = str..'local '..n..' = Instance.new("'..r.ClassName..'",ui)'
+		str = str..'local '..n..' = Instance.new("'..r.ClassName..'",'..(na or 'nil')..')'
 		nl()
 		for i,k in pairs (tbl) do
 			add_prop_code(r,i,k,n)
 		end
 	end
+	local function add_code(ui,na)
+		for e,r in pairs (ui:GetChildren()) do
+			doit(e,r,na)
+			if #r:GetChildren() > 0 then
+				add_code(r,r.Name)
+			end
+		end
+	end
+	add_code(ui,"ui")
 	return str
 end
 
-print(convert_to_code(game.StarterGui.WebUI.Catalog.Item))
+print(convert_to_code(--[[your gui here]]game.StarterGui.ScreenGui.Frame))
+
