@@ -61,3 +61,60 @@ local data = {
 	
 }
 
+
+
+local PackData --table of all packages to buy
+
+
+
+
+
+
+
+
+
+
+local ds = game:GetService("DatastoreService")
+
+local function Update_Data()
+	local p
+	repeat
+		p = pcall(function()
+			ds:SetAsync("PackData",data)
+		end)
+	until p == true
+	print"Successfully Updated Data"
+end
+
+local function Load_Data()
+	local p
+	repeat
+		p = pcall(function()
+			PackData = ds:GetAsync("PackData")
+		end)
+	until p == true and PackData
+end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
