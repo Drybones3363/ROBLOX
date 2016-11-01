@@ -42,35 +42,12 @@ local data = {
 	
 }
 
-PackData = data
-
-local function Get_Pack_Data(n)
-	for i,k in pairs (PackData) do
-		if k.n and k.n == n then
-			return k
-		end
-	end
-end
-local function Get_Pack_Items(pack,level)
-	local ret = {}
-	pack = type(pack) == "table" and pack or Get_Pack_Data(pack)
-	for i,k in pairs (pack.d or {}) do
-		if k[6] and k[6] == level then
-			table.insert(ret,k)
-		end
-	end
-	return ret
-end
+PackData = data --Packdata will be a getasync from datastore, but for now use data
 
 
 
 
 local Market_Data = {} --includes all data from the market (selling of items)
-
-
-
-
-
 
 
 
@@ -95,12 +72,54 @@ local function Load_Data()
 	until p == true and PackData
 end
 
+local function Get_Pack_Data(n)
+	for i,k in pairs (PackData) do
+		if k.n and k.n == n then
+			return k
+		end
+	end
+end
+local function Get_Pack_Items(pack,level)
+	local ret = {}
+	pack = type(pack) == "table" and pack or Get_Pack_Data(pack)
+	for i,k in pairs (pack.d or {}) do
+		if k[6] and k[6] == level then
+			table.insert(ret,k)
+		end
+	end
+	return ret
+end
+
 local function Open_Pack_Server(n)
 	local ret = {}
 	local d = Get_Pack_Data(n)
 	for i=1,math.random(10,20) do
-		Get_Pack_Items(d,level)
+		local level = 1
+		math.randomseed(os.time())
+		if math.random(500) == 1 then
+			level = 4
+		elseif math.random(20) == 1 then
+			level = 3
+		elseif math.random(3) == 1 then
+			level = 2
+		end
+		local tt = Get_Pack_Items(d,level)
+		table.insert(ret,{tt[1],tt[5]})
 	end
+	local level = 1
+	math.randomseed(os.time())
+	if math.random(500) == 1 then
+		level = 4
+	elseif math.random(20) == 1 then
+		level = 3
+	elseif math.random(3) == 1 then
+		level = 2
+	end
+	local tt = Get_Pack_Items(d,level)
+	tt = tt[math.random(#tt)]
+	ret.Received = {tt[1],tt[5]})
+	--give player item tt[1]
+	return ret
 end
 
 local ps = game:GetService("PointsService")
@@ -141,8 +160,9 @@ function Player_Added(plr)
 		ps:AwardPoints(plr.userId,1)
 	end
 	while wait(3) do
-		Open_Pack_Server()
-		--workspace.RE:FireClient(plr,"Open Pack",
+		local pack = PackData[math.random(#PackData)].n
+		local tab = Open_Pack_Server(pack)
+		workspace.RE:FireClient(plr,"Open Pack",pack,tab)
 		wait(10)
 	end
 end
