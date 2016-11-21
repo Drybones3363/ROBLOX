@@ -16,3 +16,4 @@ local function Swing(plr,handle,pos)
 	if handle:IsDescendentOf(workspace) then
 		workspace.Terrain:FillRegion(handle.Position-offset,5,air)
 	end
+end
