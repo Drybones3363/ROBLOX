@@ -24,8 +24,6 @@ end
 
 local PackData --table of all packages to buy
 
-PackData = data --Packdata will be a getasync from datastore, but for now use data
-
 local function Update_Data()
 	local p
 	repeat
@@ -48,6 +46,8 @@ local function Load_Data()
 		workspace.RemoteEvent:FireAllClients("Shop has been updated! Check out the new items!")
 	end)
 end
+
+delay(0,Load_Data)
 
 local function Get_Pack_Data(n)
 	for i,k in pairs (PackData) do
@@ -95,7 +95,13 @@ local function Open_Pack_Server(n)
 	end
 	local tt = Get_Pack_Items(d,level)
 	tt = tt[math.random(#tt)]
-	ret.Received = {tt[1],tt[5]})
-	--give player item tt[1]
+	--set return array to the item name and image
+	ret.Received = {tt[1],tt[5]}
+	--below gives player the item--
+	if Data[tostring(plr.userId)].Inventory[tt[2]] then
+		Data[tostring(plr.userId)].Inventory[tt[2]] = Data[tostring(plr.userId)].Inventory[tt[2]] + 1
+	else
+		Data[tostring(plr.userId)].Inventory[tt[2]] = 1
+	end
 	return ret
 end
