@@ -4,4 +4,4 @@
 
 Project Started: <b>June, 2016</b><br>
 
-New idea for ROBLOX, will probably need a graphics designer/builder at some point. PM me on ROBLOX if interested.
+Released: <b>December, 2016</b><br>
