@@ -3,5 +3,4 @@
 <br>
 
 Project Started: <b>June, 2016</b><br>
-
-Released: <b>December, 2016</b><br>
+Release Date: <b>December, 2016</b><br>
