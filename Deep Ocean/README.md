@@ -4,4 +4,4 @@
 
 Project Started: <b>June, 2017</b><br>
 Alpha Release Date: <b>August 17th, 2017</b><br>
-Estimated Beta Release: <b>December, 2017</b><br>
+<!-- Estimated Beta Release: <b>December, 2017</b><br> -->
