@@ -1,5 +1,4 @@
 local bans = {28704965,641139,61190438,37998759,10390103,40088614,9420953,25800799,83335320,60809723,49713163,43949412,6784581,38018671,15499235,23677739,77030667,71209663,77104779,19473129,20041028,17198781,8975156,67117851,25739203,25656892,24665617,37809289,46100020,51234156,50743516,6305766}
---61190438 faved cube eat cube in comments,37998759 said buy just to dislike,10390103 said go to jail in the real world for making this game
 local ms,ps,bs,ds = game:GetService("MarketplaceService"),game:GetService("PointsService"),game:GetService("BadgeService"),game:GetService("DataStoreService"):GetDataStore("Shop")
 local place
 if game.PlaceId and game.PlaceId > 0 then
